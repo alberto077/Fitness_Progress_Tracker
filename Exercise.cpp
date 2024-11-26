@@ -34,6 +34,7 @@ void Exercise::setworkoutReps(int tempreps){
 void Exercise::setworkoutWeight(int tempweight){
     weight = tempweight;
 }
+ 
  //getters
 string Exercise::getworkoutName() const{
     return workoutName;
@@ -48,12 +49,14 @@ int Exercise::getworkoutWeight() const{
     return weight;
 }
 
+
+//unique functions
 void Exercise::AddWorkout(const Exercise& newWorkout){
     workoutList.push_back(newWorkout);
 }
 
 void Exercise::removeWorkout(string removedworkoutName){
-    cout << "REMOVING IN PROCESS" << endl;
+    cout << endl << "REMOVING IN PROCESS" << endl;
     for (int i = 0; i < workoutList.size(); i++){
         if (workoutList.at(i).getworkoutName() == removedworkoutName){
             workoutList.erase(workoutList.begin() + i);
@@ -89,4 +92,13 @@ void Exercise::changeWorkoutInfo(const Exercise& changeWorkout){
     }
     // if name wasnt found
     cout << "WORKOUT NOT FOUND NOTHING CHANGED" << endl; 
+}
+
+void Exercise::displayWorkout() const{
+    if (workoutList.empty()){
+        cout << "No workouts have been inputted" << endl << endl;
+    }
+    for (int i = 0; i < workoutList.size(); i++){
+        cout << workoutList.at(i).getworkoutName() << ": " << workoutList.at(i).getworkoutSets() << " x " << workoutList.at(i).getworkoutReps() << " (" << workoutList.at(i).getworkoutWeight() << "lbs)" << endl;
+    }
 }

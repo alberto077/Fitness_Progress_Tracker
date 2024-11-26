@@ -34,7 +34,7 @@ public:
 
     void changeWorkoutInfo(const Exercise& changeWorkout);
 
-    //void displayWorkout() const;
+    void displayWorkout() const;
 
     //Edit workout (Change name, reps, sets, weight)
     //Sort workout (display workouts based on if the the user wants by weight or alphabetically)

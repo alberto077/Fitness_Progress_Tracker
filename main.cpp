@@ -66,7 +66,12 @@ void RunMenu(int choice, Exercise& workouts){
         }
 
     else if (choice == 2){
+        string removedWorkout;
         cout << "REMOVING A WORKOUT" <<  endl;
+        cout  << "Input the name of the workout" << endl;
+        cin.ignore(1000, '\n');
+        getline(cin, removedWorkout);
+        workouts.removeWorkout(removedWorkout);
         //workouts.removeWorkout();
     }
 
@@ -125,12 +130,16 @@ void RunMenu(int choice, Exercise& workouts){
             cout << "Exiting" << endl;
             return;
         }
-        
-        
 
     }while (input != 5);
 
-}
+    }
+    else if (choice == 5){
+        cout << "DISPLAYING ALL WORKOUTS" << endl << endl;
+        workouts.displayWorkout();
+        cout << endl;
+    }
+
 
         
 }
