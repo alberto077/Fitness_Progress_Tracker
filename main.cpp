@@ -134,9 +134,15 @@ void RunMenu(int choice, Exercise& workouts){
     }while (input != 5);
 
     }
+    
+    else if (choice == 4){
+        string workoutName;
+        cout << "Enter the name of the workout" << endl;
+    }
+
     else if (choice == 5){
         cout << "DISPLAYING ALL WORKOUTS" << endl << endl;
-        workouts.displayWorkout();
+        workouts.displayAllWorkout();
         cout << endl;
     }
 

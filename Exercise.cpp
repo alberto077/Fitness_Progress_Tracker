@@ -94,7 +94,23 @@ void Exercise::changeWorkoutInfo(const Exercise& changeWorkout){
     cout << "WORKOUT NOT FOUND NOTHING CHANGED" << endl; 
 }
 
-void Exercise::displayWorkout() const{
+void Exercise::displayWorkoutInfo(string workoutName){
+    if (workoutList.empty()){
+        cout << "No workouts have been inputted" << endl << endl;
+    }
+    else{
+        for (int i = 0; i < workoutList.size()){
+            if (workoutList.at(i).getworkoutName() == workoutName){
+                cout << workoutList.at(i).getworkoutName() << ": " << workoutList.at(i).getworkoutSets() << " x " << workoutList.at(i).getworkoutReps() << " (" << workoutList.at(i).getworkoutWeight() << "lbs)" << endl;
+                return;
+            }
+
+        }
+        cout << workoutName << " was not found" << endl;
+    }
+}
+
+void Exercise::displayAllWorkout() const{
     if (workoutList.empty()){
         cout << "No workouts have been inputted" << endl << endl;
     }
