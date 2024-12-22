@@ -99,9 +99,9 @@ void Exercise::displayWorkoutInfo(string workoutName){
         cout << "No workouts have been inputted" << endl << endl;
     }
     else{
-        for (int i = 0; i < workoutList.size()){
+        for (int i = 0; i < workoutList.size(); i++){
             if (workoutList.at(i).getworkoutName() == workoutName){
-                cout << workoutList.at(i).getworkoutName() << ": " << workoutList.at(i).getworkoutSets() << " x " << workoutList.at(i).getworkoutReps() << " (" << workoutList.at(i).getworkoutWeight() << "lbs)" << endl;
+                cout << "Info: " << workoutList.at(i).getworkoutSets() << " x " << workoutList.at(i).getworkoutReps() << " (" << workoutList.at(i).getworkoutWeight() << "lbs)" << endl;
                 return;
             }
 

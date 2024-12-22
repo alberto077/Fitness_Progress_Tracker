@@ -83,12 +83,13 @@ void RunMenu(int choice, Exercise& workouts){
     cin.ignore(1000, '\n');
     getline(cin, modfiedWorkout);
     //possible check herr
+        do{
         cout << "1. Change Name" << endl;
         cout << "2. Change Sets" << endl;
         cout << "3. Change Reps" << endl;
         cout << "4. Change Weight" << endl;
         cout << "5. Exit" << endl;
-        do{
+        
         cout << "Select input (1-5)" << endl << endl;
         cin >> input;
 
@@ -138,6 +139,9 @@ void RunMenu(int choice, Exercise& workouts){
     else if (choice == 4){
         string workoutName;
         cout << "Enter the name of the workout" << endl;
+        cin >> workoutName;
+        workouts.displayWorkoutInfo(workoutName);
+
     }
 
     else if (choice == 5){
