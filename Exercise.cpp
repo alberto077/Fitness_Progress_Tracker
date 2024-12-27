@@ -96,7 +96,7 @@ void Exercise::changeWorkoutInfo(const Exercise& changeWorkout){
 
 void Exercise::displayWorkoutInfo(string workoutName){
     if (workoutList.empty()){
-        cout << "No workouts have been inputted" << endl << endl;
+        cout << "No workouts have been inputed" << endl << endl;
     }
     else{
         for (int i = 0; i < workoutList.size(); i++){
@@ -117,4 +117,64 @@ void Exercise::displayAllWorkout() const{
     for (int i = 0; i < workoutList.size(); i++){
         cout << workoutList.at(i).getworkoutName() << ": " << workoutList.at(i).getworkoutSets() << " x " << workoutList.at(i).getworkoutReps() << " (" << workoutList.at(i).getworkoutWeight() << "lbs)" << endl;
     }
+}
+
+
+void Exercise::mergeExercises(vector<Exercise> &tempList, int start , int middle, int end){
+    int tempCounter = start;
+    int leftPointer = start;
+    int rightPointer = middle +1;
+    
+  while(leftPointer <= middle && rightPointer <= end){  
+    if(workoutList.at(leftPointer).getworkoutName() < workoutList.at(rightPointer).getworkoutName()){
+        tempList.at(tempCounter) = workoutList.at(leftPointer);
+        tempCounter++;
+        leftPointer++;
+    }
+    else{
+        tempList.at(tempCounter) = workoutList.at(rightPointer);
+        tempCounter++;
+        rightPointer++;
+    }
+  }
+while (leftPointer <= middle){
+    tempList.at(tempCounter) = workoutList.at(leftPointer);
+    leftPointer++;
+    tempCounter++;
+}
+while (rightPointer <= end){
+    tempList.at(tempCounter) = workoutList.at(rightPointer);
+    rightPointer++;
+    tempCounter++;
+}
+
+    
+
+    for (int i = 0; i <workoutList.size(); i++){
+        workoutList.at(i) = tempList.at(i);
+    }
+}
+void Exercise::sortExercises(vector<Exercise> &tempList, int start, int end){
+    if (start < end){
+        int middle = (start + end)/2;
+        sortExercises(tempList, start, middle);
+        sortExercises(tempList, middle+1, end);
+        mergeExercises(tempList, start, middle, end);
+    }
+
+}
+
+void Exercise::sortExercises(){
+    
+    if(workoutList.empty()){
+        cout << "No workouts have been inputed" << endl << endl;
+    }
+    else{
+
+    
+    vector <Exercise> tempWorkoutList = workoutList;
+
+    sortExercises(tempWorkoutList, 0, workoutList.size()-1);
+    }
+    
 }

@@ -4,10 +4,8 @@
 using namespace std;
 
 /*TODO: 
-Add all other functions in the class folders
-Finish the remove function in main
-impletment a sort algorithm to sort the workouts
 implement the users name and the date.
+create a validation check function for all inputs.
 
 
 
@@ -20,13 +18,14 @@ int PrintMenu(){
     cout << "3. Change Workout Info" << endl;
     cout << "4. Output Workout Info" << endl;
     cout << "5. View all workouts" << endl;
-    cout << "6. Exit" << endl;
+    cout << "6. Sort Workouts" << endl; // merge sort the list and make sure it stays this way, take in the whole list not a copy.
+    cout << "7. Exit" << endl;
     do{
-        cout << "Please select an option (1-6): " << endl;
+        cout << "Please select an option (1-7): " << endl;
         cin >> choice;
 
         //Input Validation
-        if(cin.fail()|| choice < 1 || choice > 6){
+        if(cin.fail()|| choice < 1 || choice > 7){
             cin.clear();
             cin.ignore(1000, '\n');
             cout << "Invalid input" << endl << endl;
@@ -34,7 +33,7 @@ int PrintMenu(){
         }
         
 
-    }while(choice < 1 || choice > 6);
+    }while(choice < 1 || choice > 7);
     
     return choice;
 }
@@ -72,7 +71,6 @@ void RunMenu(int choice, Exercise& workouts){
         cin.ignore(1000, '\n');
         getline(cin, removedWorkout);
         workouts.removeWorkout(removedWorkout);
-        //workouts.removeWorkout();
     }
 
     else if (choice == 3){
@@ -82,7 +80,6 @@ void RunMenu(int choice, Exercise& workouts){
     cout << "Input the name of the workout" << endl;
     cin.ignore(1000, '\n');
     getline(cin, modfiedWorkout);
-    //possible check herr
         do{
         cout << "1. Change Name" << endl;
         cout << "2. Change Sets" << endl;
@@ -126,12 +123,10 @@ void RunMenu(int choice, Exercise& workouts){
             cin >> changedWeight;
             workouts.changeWorkoutInfo(Exercise("none", 0, 0, changedWeight));
         }
-
         else{
             cout << "Exiting" << endl;
             return;
         }
-
     }while (input != 5);
 
     }
@@ -139,7 +134,8 @@ void RunMenu(int choice, Exercise& workouts){
     else if (choice == 4){
         string workoutName;
         cout << "Enter the name of the workout" << endl;
-        cin >> workoutName;
+        cin.ignore(1000, '\n');
+        getline(cin, workoutName);
         workouts.displayWorkoutInfo(workoutName);
 
     }
@@ -148,6 +144,11 @@ void RunMenu(int choice, Exercise& workouts){
         cout << "DISPLAYING ALL WORKOUTS" << endl << endl;
         workouts.displayAllWorkout();
         cout << endl;
+    }
+
+    else if (choice == 6){
+        cout << "SORTING IN PROGRESS" << endl;
+        workouts.sortExercises();   
     }
 
 
@@ -169,7 +170,7 @@ int main(){
     do{
     choice  = PrintMenu();
     RunMenu(choice, workouts);
-    }while (choice!= 6);
+    }while (choice!= 7);
     
     return 0;
 

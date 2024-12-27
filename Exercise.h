@@ -27,6 +27,7 @@ public:
     int  getworkoutReps() const;
     int  getworkoutWeight() const;
     
+    //unique functions
     //Add an entire workout with all information
     void AddWorkout(const Exercise& newWorkout);
     //Remove an entire workout with all information
@@ -37,6 +38,12 @@ public:
     void displayWorkoutInfo(string workoutName);
 
     void displayAllWorkout() const;
+    
+    void mergeExercises(vector<Exercise> &tempList,int start , int middle, int end);
+
+    void sortExercises (vector<Exercise> &tempList, int start, int end);
+
+    void sortExercises();
 
     //Edit workout (Change name, reps, sets, weight)
     //Sort workout (display workouts based on if the the user wants by weight or alphabetically)
